@@ -10,14 +10,16 @@ int allZero[10] = { 0 };
 
  */
 
- int arraysize(int *array){
+ int arraysize (int a,int b);
+
+ int arraysize(int a,int b){
    int size = 0;
 /*
    printf("Array %lu\n",sizeof(array) );
    printf("Array[0] %lu\n",sizeof *(array) );
    */
 
-   size = sizeof(array) / sizeof(array[0]);
+   size = a / b;
 
    return size;
  }
@@ -29,15 +31,18 @@ int main(int argc, char const *argv[]) {
   int *px = &x;
   int array[] = { 1, 2, 3, 4, 5 };
   int size = 0;
+  int size1 = 0;
 
   printf("Val: %lu \n", sizeof(10) );
   printf("Var: %lu \n", sizeof(x) );
   printf("Pointer: %lu \n", sizeof(px) );
   printf("Array: %lu \n", sizeof(array) );
 
-  size = arraysize(array);
+  size = arraysize(sizeof(array),sizeof*(array));
 
-  printf("Size  = %d \n",size );
+  //size1 = sizeof(array) / sizeof*(array);
+
+  printf("Size  = %ul \n",size );
 
   return 0;
 }
