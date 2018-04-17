@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <assert.h>
+#include <string.h>
 
 /*
 Arrays with static extent have their elements initialised to zero by default
@@ -11,6 +13,21 @@ int allZero[10] = { 0 };
  */
 
  int arraysize (int a,int b);
+
+int count (char v[],int len){
+     int total = 0;
+
+     assert( sizeof(v) / sizeof(v[0]) == len);
+
+     while(len--){
+       total+=v[len];
+     }
+
+ return total;
+
+}
+
+
 
  int arraysize(int a,int b){
    int size = 0;
@@ -33,6 +50,17 @@ int main(int argc, char const *argv[]) {
   int size = 0;
   int size1 = 0;
 
+  char string[20] = {'0'};
+
+  int c = 0;
+
+  c = count(string,strlen(string));
+
+  printf("Valore di ritorno funzione count = %4d \n", c );
+
+
+
+
   printf("Val: %lu \n", sizeof(10) );
   printf("Var: %lu \n", sizeof(x) );
   printf("Pointer: %lu \n", sizeof(px) );
@@ -43,6 +71,7 @@ int main(int argc, char const *argv[]) {
   //size1 = sizeof(array) / sizeof*(array);
 
   printf("Size  = %ul \n",size );
+
 
   return 0;
 }
